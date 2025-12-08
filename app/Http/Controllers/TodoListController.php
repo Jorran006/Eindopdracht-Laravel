@@ -13,7 +13,8 @@ class TodoListController extends Controller
      */
     public function index()
     {
-        $lists = auth()->user()->todoLists;
+        $lists = auth()->user()->todoLists()->with('tasks')->get();
+
         return view('todo_lists.index', compact('lists'));
     }
 
